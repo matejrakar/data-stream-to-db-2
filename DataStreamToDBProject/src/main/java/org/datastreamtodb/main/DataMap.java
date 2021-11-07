@@ -7,11 +7,14 @@ import java.util.Map;
 
 public class DataMap {
 
-	private Map<Integer, List<Data>> dataMap; //= new HashMap<Integer, List<Data>>();
+	private Map<Integer, List<Data>> dataMap;
 
+	/**
+	 * Adds data to this.dataMap. It retrieves MatchId from given Data object and then either creates new list of Data object for this MatchId or adds Data object to an existing one.
+	 * @param data Data object to be added to DataMap.
+	 */
 	public void addToDataMap(Data data) throws Exception {
 		try{
-			//System.out.println("try in addtodatamap");
 			int matchId = data.getMatchId();
 			if(this.dataMap.containsKey(matchId)) {
 				List<Data> temp = this.dataMap.get(matchId);
@@ -32,8 +35,10 @@ public class DataMap {
 
 	}
 
+	/**
+	 * Prints out whole dataMap object. For demo purposes.
+	 */
 	public void print() {
-		//System.out.println("PRINT dataMap");
 		try {
 			for (Map.Entry<Integer, List<Data>> entry : this.dataMap.entrySet()) {
 				Integer key = entry.getKey();
@@ -49,6 +54,7 @@ public class DataMap {
 					System.out.println("Specifiers: " + data.getSpecifiers());
 					System.out.println("Event type: " + data.getEventType());
 					System.out.println("Processed: " + data.isProcessed());
+					System.out.println("Inserted: " + data.isInserted());
 					System.out.println("********************************");
 				}
 				System.out.println("--------------------------------");
@@ -70,6 +76,5 @@ public class DataMap {
 	public void setDataMap(Map<Integer, List<Data>> dataMap) {
 		this.dataMap = dataMap;
 	}
-
 
 }
