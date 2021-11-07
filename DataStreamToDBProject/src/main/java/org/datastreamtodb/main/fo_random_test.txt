@@ -1,0 +1,18 @@
+﻿MATCH_ID|MARKET_ID|OUTCOME_ID|SPECIFIERS
+'sr:match:123A1'|60|'2'| 'free kick123'
+'sr:match:234B1'|218|'5'|'setnr=2|gamenr=6|pointnr=1' 'yellowcard234'
+'sr:match:123B1'|1|'3'| 'goal123'
+'sr:match:234A1'|19|'13'|'total=32.5' 'free kick 234'
+'sr:match:123A2'|15|'sr:winning_margin:11+:127'|'variant=sr:winning_margin:11+' 'redcard123'
+'sr:match:234B2'|45|'322'| 'goal234'
+'sr:match:345A1'|86|'5'| 'free kick345'
+'sr:match:456B1'|426|'1487'|'periodnr=1' 'yellowcard456'
+'sr:match:345B1'|208|'4'|'setnr=3|games=2' 'goal345'
+'sr:match:456A1'|18|'12'|'total=53.5' 'free kick 456'
+'sr:match:345A2'|210|'4'|'setnr=3|gamenr=5' 'redcard345'
+'sr:match:456B2'|29|'76'| 'goal456' 
+'sr:match:567A1'|14|'1711'|'hcp=2:0' 'free kick 567'
+'sr:match:678B1'|14|'1711'|'hcp=0:2' 'yellow card 678'
+'sr:match:567B1'|45|'280'| 'goal 567' 
+'sr:match:678A1'|45|'276'| 'redcard678'
+'sr:match:567A2'|789|'pre:playerprops:13478981:508524:14'|'variant=pre:playerprops:13478981:508524' 'redcard567' --- a 1s redcard, free kick b 1ms yellow card, goal

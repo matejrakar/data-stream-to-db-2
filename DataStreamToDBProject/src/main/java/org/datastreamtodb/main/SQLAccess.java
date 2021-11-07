@@ -28,10 +28,10 @@ public class SQLAccess {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection("jdbc:mysql://localhost/datastream?user=root&password=root");
             
-            preparedStatement = connect.prepareStatement("SELECT TAX_RATE, TAX_AMOUNT, TAX_TYPE_ID FROM TRADER WHERE ID = ?");
-            preparedStatement.setInt(1, traderId);
-            resultSet = preparedStatement.executeQuery();
-            resultSet.next();
+            //preparedStatement = connect.prepareStatement("SELECT TAX_RATE, TAX_AMOUNT, TAX_TYPE_ID FROM TRADER WHERE ID = ?");
+            //preparedStatement.setInt(1, traderId);
+            //resultSet = preparedStatement.executeQuery();
+            //resultSet.next();
             
            //return new Trader(resultSet.getBigDecimal("TAX_RATE"), resultSet.getBigDecimal("TAX_AMOUNT"), resultSet.getInt("TAX_TYPE_ID"));
         } catch (Exception e) {
