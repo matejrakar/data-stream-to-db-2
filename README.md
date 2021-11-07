@@ -6,7 +6,7 @@ as fast as possible, but the order of insertion must be the same as read order b
 track of read data in ordered way.
 
 Each line contains MatchId, which looks like "123A1", the number on the left of a character being actual MatchId,
-the number on the right being InputNumber (represents in which order the data with same MatchId was read) and 
+the number on the right being Occurence (represents in which order the data with same MatchId was read) and 
 the character in the middle, which represents processing difficulty; A being 1000ms and B being 1ms.
 
 The program uses multithreading so that multiple tasks with different difficulty levels can be processed at 
