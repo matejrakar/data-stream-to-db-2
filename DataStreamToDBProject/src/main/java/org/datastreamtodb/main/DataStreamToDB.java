@@ -14,7 +14,7 @@ import org.datastreamtodb.main.Data.TypeOfEvent;
 
 public class DataStreamToDB {
 	
-	public static void main(String[] args) throws SQLException{
+	public static void main(String[] args) throws SQLException {
 		Connection connection = DBCPDataSource.getConnection();
 	    ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(8);
         List<Future<Data>> futureResults = new ArrayList();
@@ -23,7 +23,7 @@ public class DataStreamToDB {
 	        BufferedReader br = new BufferedReader(new FileReader("src\\main\\java\\org\\datastreamtodb\\main\\fo_random_test.txt"));
 	        String line = null;
 	        br.readLine(); //We skip first line, which contains column ID
-	        while ((line = br.readLine()) != null || 1 == 1){// 1==1 => to give a program time to finish all pending tasks even when all lines are read.
+	        while ((line = br.readLine()) != null || 1 == 1) {// 1==1 => to give a program time to finish all pending tasks even when all lines are read.
 	        	if(line != null) { //As long as we are reading data, we continue to retrieve it from lines and pass it to be processed by threads.
 		        	//String[] data = line.split("\\|", 4); //We split line by first 3 pipes.
 		        	Data currentData = retrieveDataFromLine(line);
@@ -60,7 +60,7 @@ public class DataStreamToDB {
                 				break;
                 			}
                 		}
-                		if(dbInsertFlag) { //If dbInsertFlag remained set to true, we can insert into database.
+                		if (dbInsertFlag) { //If dbInsertFlag remained set to true, we can insert into database.
                 			System.out.println("DB Insert MatchId: " + ((Data) tempFutureRes.get()).getMatchId() + " " + ((Data) tempFutureRes.get()).getEventType() +" InputNumber: "+ ((Data) tempFutureRes.get()).getInputNumber());
                 			InsertToDBCallable insertToDBCallable  = new InsertToDBCallable(dataMap.getDataMap().get(tempMatchId).get(tempInputNumber), connection);
         	                executor.submit(insertToDBCallable);
@@ -70,7 +70,7 @@ public class DataStreamToDB {
                     }
                 } 
                 
-                if(futureResults.size() == 0 && line == null) { //When there is no more lines from text file and also Future<Data> array is empty, we end loop.
+                if (futureResults.size() == 0 && line == null) { //When there is no more lines from text file and also Future<Data> array is empty, we end loop.
                 	break;
             	}
 	        }

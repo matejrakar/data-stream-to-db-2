@@ -15,29 +15,6 @@ public class Data {
 	private boolean processed;
 	private boolean inserted;
 	
-	/*public Data(int matchId, TypeOfEvent eventType, int occurence, int marketId, String outcomeId, String specifiers, int inputNumber, boolean processed){
-		this.matchId = matchId;
-		this.eventType = eventType;
-		this.occurence = occurence;
-		this.marketId = marketId;
-		this.outcomeId = outcomeId;
-		this.specifiers = specifiers;
-		this.inputNumber = inputNumber;
-		this.processed = processed;
-		this.inserted = false;
-	}*/
-	
-	/*public Data(int matchId, TypeOfEvent eventType, int occurence, int marketId, String outcomeId, String specifiers, boolean processed){
-		this.matchId = matchId;
-		this.eventType = eventType;
-		this.occurence = occurence;
-		this.marketId = marketId;
-		this.outcomeId = outcomeId;
-		this.specifiers = specifiers;
-		this.processed = processed;
-		this.inserted = false;
-	}*/
-	
 	public Data() {};
 	
 	public boolean isInserted() {

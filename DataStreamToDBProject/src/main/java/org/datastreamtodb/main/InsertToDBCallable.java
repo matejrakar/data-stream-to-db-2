@@ -18,7 +18,7 @@ public class InsertToDBCallable implements Callable<String> {
 	 */
 	@Override
     public String call() throws Exception {
-		try{
+		try {
 			Data data = this.data;
 			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO DATA (MATCH_ID, MARKET_ID, OUTCOME_ID, SPECIFIERS) VALUES (?,?,?,?)");
 		    preparedStatement.setInt(1, data.getMatchId());

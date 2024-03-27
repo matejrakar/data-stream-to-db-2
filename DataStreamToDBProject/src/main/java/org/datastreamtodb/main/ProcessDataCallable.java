@@ -16,7 +16,7 @@ public class ProcessDataCallable implements Callable<Data> {
 	@Override
     public Data call() throws Exception {
 		Data data = this.data;
-		if(data.getEventType() == TypeOfEvent.valueOf("A")) {
+		if (data.getEventType() == TypeOfEvent.valueOf("A")) {
 			Thread.sleep(1000);
 			data.setProcessed(true);
 	        return data;

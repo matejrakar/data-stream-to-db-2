@@ -13,21 +13,13 @@ public class DataMap {
 	 * Adds data to this.dataMap. It retrieves MatchId from given Data object and then either creates new list of Data object for this MatchId or adds Data object to an existing one.
 	 * @param data Data object to be added to DataMap.
 	 */
-	public void addToDataMap(Data data) throws Exception {
+	public void addToDataMap(Data data) {
 		try{
 			int matchId = data.getMatchId();
-			if(this.dataMap.containsKey(matchId)) {
-				List<Data> temp = this.dataMap.get(matchId);
-				data.setInputNumber(temp.size());
-				temp.add(data);
-				dataMap.put(matchId, temp);
-			}
-			else {
-				List<Data> temp = new ArrayList<Data>();
-				data.setInputNumber(0);
-				temp.add(data);
-				dataMap.put(matchId, temp);
-			}
+			List<Data> tempList = dataMap.getOrDefault(matchId, new ArrayList<>());
+			data.setInputNumber(tempList.size());
+			tempList.add(data);
+			dataMap.put(matchId, tempList);
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -43,7 +35,7 @@ public class DataMap {
 			for (Map.Entry<Integer, List<Data>> entry : this.dataMap.entrySet()) {
 				Integer key = entry.getKey();
 				List<Data> list = entry.getValue();
-				System.out.println("MATCH ID: " + String.valueOf(key));
+				System.out.println("MATCH ID: " + key);
 				for (int i = 0; i < list.size(); i++) {
 					Data data = list.get(i);
 					System.out.println("Input number: " + data.getInputNumber());
@@ -66,7 +58,7 @@ public class DataMap {
 	}
 
 	public DataMap() {
-		this.dataMap = new HashMap<Integer, List<Data>>();
+		this.dataMap = new HashMap<>();
 	}
 
 	public Map<Integer, List<Data>> getDataMap() {
