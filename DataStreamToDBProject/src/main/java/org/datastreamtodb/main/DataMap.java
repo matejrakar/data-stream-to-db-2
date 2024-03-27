@@ -14,7 +14,7 @@ public class DataMap {
 	 * @param data Data object to be added to DataMap.
 	 */
 	public void addToDataMap(Data data) {
-		try{
+		try {
 			int matchId = data.getMatchId();
 			List<Data> tempList = dataMap.getOrDefault(matchId, new ArrayList<>());
 			data.setInputNumber(tempList.size());
