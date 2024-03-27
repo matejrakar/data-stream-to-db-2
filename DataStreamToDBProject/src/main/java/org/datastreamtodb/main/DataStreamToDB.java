@@ -21,11 +21,10 @@ public class DataStreamToDB {
 	    try {
 	    	DataMap dataMap = new DataMap();
 	        BufferedReader br = new BufferedReader(new FileReader("src\\main\\java\\org\\datastreamtodb\\main\\fo_random_test.txt"));
-	        String line = null;
+	        String line;
 	        br.readLine(); //We skip first line, which contains column ID
 	        while ((line = br.readLine()) != null || 1 == 1) {// 1==1 => to give a program time to finish all pending tasks even when all lines are read.
 	        	if(line != null) { //As long as we are reading data, we continue to retrieve it from lines and pass it to be processed by threads.
-		        	//String[] data = line.split("\\|", 4); //We split line by first 3 pipes.
 		        	Data currentData = retrieveDataFromLine(line);
 		        	dataMap.addToDataMap(currentData); //We add retrieved data from line to dataMap object.
 	        		
@@ -41,7 +40,7 @@ public class DataStreamToDB {
 	        	 * *InputNumber = order in which data was read based on single MatchId
 	        	 */
                 for (int counter = 0; counter < futureResults.size(); counter++) {
-                	boolean dbInsertFlag = true; //Boolean value, that indicates whether insert in DB is possible due to potential pending events with higher time difficulty (A)
+                	boolean dbInsertFlag = true; //Boolean value, that indicates whether insert in DB is possible due to potential pending events of same MatchID with higher time difficulty (A)
                 	Future<Data> tempFutureRes = futureResults.get(counter); //We get a single Future<Data> from List of Future<Data> elements
                 	
                     if(tempFutureRes.isDone()) { //We check if this entry is already done executing => is already processed (processed = true)
@@ -49,7 +48,7 @@ public class DataStreamToDB {
                 		List<Data> tempList = dataMap.getDataMap().get(tempMatchId); //We get List<Data> tempList from dataMap for specific MatchId
                 		int tempInputNumber = ((Data) tempFutureRes.get()).getInputNumber(); //We save InputNumber to temporary variable.
                 		
-                		for(int j = 0; j<tempInputNumber; j++) { //We cycle through all entries in list, which have InputNumber smaller than our entry's InputNumber => those entries have to be inserted before our entry            		
+                		for(int j = 0; j < tempInputNumber; j++) { //We cycle through all entries in list, which have InputNumber smaller than our entry's InputNumber => those entries have to be inserted before our entry
                 			if(tempList.get(j).getInputNumber() < tempInputNumber) { //We check if InputNumber is for sure smaller than InputNumber of our entry
                     			if(tempList.get(j).isInserted() == false) { //If this condition, then it must mean that an entry with higher difficulty before our element is still waiting to be processed.
                 					dbInsertFlag = false; //We prohibit insert to database.
