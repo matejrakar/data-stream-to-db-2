@@ -1,5 +1,5 @@
-# data-stream-to-db
-Data stream to DB by Matej Rakar
+# data-stream-to-db-2
+Data stream to DB 2.0 by Matej Rakar
 
 This program reads a .txt file that simulates continuous data stream. It's objective is to insert data in database
 as fast as possible, but the order of insertion must be the same as read order based on MatchId. It must also keep 
@@ -19,6 +19,6 @@ To test this application, please follow the steps below:
 2. Start Apache and MySql services from xampp.
 3. Visit http://localhost/phpmyadmin/ and create DB schema named datastream.
 4. Then go to Import tab and import file named data.sql from my repository.
-5. Install Eclipse IDE with Java EE (using JDK 11).
+5. Install IntelliJ and Java 11
 6. Connect it with GitHub and clone my repository to your machine.
 7. Run application.
